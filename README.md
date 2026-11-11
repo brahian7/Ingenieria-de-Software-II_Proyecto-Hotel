@@ -1,6 +1,6 @@
 # 🏨 Sistema de Gestión Hotelera - Proyecto de Software II
 
-Sistema de información desarrollado para la gestión integral de reservas, habitaciones, usuarios y control operativo de un hotel.
+Sistema de información desarrollado para la automatización, administración y control integral de reservas, habitaciones, usuarios y operaciones de un hotel.
 
 ---
 
@@ -11,39 +11,75 @@ Sistema de información desarrollado para la gestión integral de reservas, habi
 | Integrante | Rol | Responsabilidad Principal |
 | :--- | :--- | :--- |
 | **Juan Manuel Orozco** | **Líder Técnico** | Coordina el alcance, la arquitectura general del software y la integración de los cambios en el repositorio. |
-| **Jan Esteban Suarez** | **Responsable de Pruebas** | Diseña los casos de prueba (unitarios/integración) y coordina su automatización para verificar la estabilidad del sistema. |
+| **Jan Esteban Suarez Escobar** | **Responsable de Pruebas** | Diseña los casos de prueba (unitarios/integración) y coordina su automatización para verificar la estabilidad del sistema. |
 | **Brayan Camilo Caceres** | **Responsable de Calidad y Documentación** | Revisa la calidad del código, registra defectos, propone acciones de mantenimiento y mantiene la documentación del `README.md`. |
 
+*(Reemplaza "Integrante 1", "Integrante 2" e "Integrante 3" por los nombres reales de los miembros del equipo).*
 
 ---
 
 ## 📌 Requisitos del Sistema
 
 ### ⚙️ Requisitos Funcionales (RF)
-* **RF01 - Gestión de Usuarios y Autenticación:** Inicio de sesión, cierre de sesión y control de accesos según roles (Administrador, Recepcionista, Cliente).
-* **RF02 - Gestión de Habitaciones:** Permite registrar, editar, listar, desactivar y consultar el estado de las habitaciones (Disponible, Ocupada, Mantenimiento).
-* **RF03 - Control de Clientes / Huéspedes:** Registro de datos personales de los huéspedes e historial de hospedajes.
-* **RF04 - Módulo de Reservas:** Permite crear, modificar y cancelar reservas especificando fecha de entrada, fecha de salida y tipo de habitación.
-* **RF05 - Procesamiento de Check-In / Check-Out:** Control de ingreso y salida del huésped con actualización automática del estado de la habitación.
-* **RF06 - Reportes y Panel de Control:** Visualización básica del porcentaje de ocupación e historial de reservas del hotel.
 
-### 🛡️ Requisitos No Funcionales (RNF)
-* **RNF01 - Usabilidad:** Interfaz intuitiva y adaptable, fácil de operar por el personal administrativo con mínima capacitación.
-* **RNF02 - Rendimiento:** Las consultas a la base de datos y respuesta de la interfaz no superan los 2 segundos bajo carga normal.
-* **RNF03 - Seguridad:** Contraseñas encriptadas en la base de datos y validación de sesiones para prevenir acceso no autorizado a rutas protegidas.
-* **RNF04 - Mantenerabilidad:** Estructura modular del código para facilitar la corrección de errores, refactorización y adición de nuevos módulos.
-* **RNF05 - Disponibilidad:** Diseñado para funcionar de manera continua en entornos locales de servidor web (Apache / Nginx / PHP / Node.js).
+#### Módulo de Usuarios y Autenticación
+* **RF01 - Autenticación de Usuarios:** Permitir el inicio de sesión mediante credenciales (correo/usuario y contraseña) y cierre de sesión seguro.
+* **RF02 - Control de Acceso por Roles:** Restringir vistas y funcionalidades según el rol asignado (Administrador, Recepcionista, Cliente).
+
+#### Módulo de Gestión de Habitaciones
+* **RF03 - Administración de Habitaciones:** Permitir registrar, editar, listar y cambiar el estado operacional de las habitaciones (Disponible, Ocupada, Limpieza, Mantenimiento).
+* **RF04 - Categorización de Habitaciones:** Clasificar las habitaciones por tipo (Sencilla, Doble, Suite) asignando precios por noche y capacidad máxima.
+
+#### Módulo de Huéspedes y Reservas
+* **RF05 - Registro de Huéspedes:** Registrar y consultar datos personales e historial de hospedajes de los clientes.
+* **RF06 - Gestión de Reservas:** Crear, consultar, modificar y cancelar reservas validando la disponibilidad de fechas y habitaciones.
+* **RF07 - Control de Check-In y Check-Out:** Registrar el ingreso y salida del huésped actualizando automáticamente el estado de la habitación asignada.
+
+#### Módulo de Base de Datos
+* **RF08 - Persistencia de Datos:** Registrar y almacenar la información transaccional (usuarios, clientes, habitaciones, reservas) de forma permanente mediante un sistema gestor relacional.
+* **RF09 - Integridad Referencial de Datos:** Garantizar que las relaciones de datos (ej. Reserva-Huésped, Reserva-Habitación) mantengan la coherencia lógica mediante claves primarias y foráneas (`FOREIGN KEYS`).
+* **RF10 - Consultas e Historial:** Permitir consultar el historial completo de reservas y transacciones pasadas mediante consultas optimizadas a la base de datos.
 
 ---
 
-## 🚀 Guía de Ejecución e Instalación
+### 🛡️ Requisitos No Funcionales (RNF)
 
-Sigue estos pasos para desplegar y probar el proyecto en tu entorno local:
+#### Rendimiento y Disponibilidad
+* **RNF01 - Tiempo de Respuesta:** Las peticiones del sistema y las consultas a la base de datos no deben superar los 2 segundos de respuesta bajo condiciones normales de carga.
+* **RNF02 - Disponibilidad:** El sistema debe estar disponible para su ejecución continua en entornos de desarrollo o servidores web locales (Apache, Nginx, PHP Built-in server).
 
-### 1. Requisitos Previos
-Asegúrate de contar con las siguientes herramientas instaladas:
-* Servidor local (XAMPP, Laragon, WAMP o tu entorno preferido con PHP / Node.js / Python según aplique).
-* Base de datos MySQL / MariaDB / PostgreSQL.
-* Git.
+#### Seguridad
+* **RNF03 - Encriptación de Contraseñas:** Las contraseñas de los usuarios deben almacenarse encriptadas en la base de datos utilizando algoritmos hash seguros (ej. `password_hash()` con bcrypt).
+* **RNF04 - Protección contra Inyección SQL:** Todas las consultas a la base de datos deben implementarse mediante sentencias preparadas (`Prepared Statements` / PDO) para evitar ataques de inyección SQL.
 
-https://trello.com/b/tb5hQgQ5/proyecto-final-ing-software
+#### Usabilidad y Mantenimiento
+* **RNF05 - Usabilidad de la Interfaz:** Interfaz intuitiva y adaptable (responsive design) navegable fácilmente por el personal administrativo.
+* **RNF06 - Arquitectura Modular y Legibilidad:** Estructura de código organizada por capas o patrón MVC para facilitar la mantenibilidad, refactorización y extensión de funciones.
+
+---
+
+## 🗄️ Estructura y Esquema de la Base de Datos
+
+El sistema utiliza un modelo relacional SQL. A continuación se presenta el diseño general de entidades del archivo `database/schema.sql`:
+
+```text
++-------------------+        +-------------------+        +-------------------+
+|     USUARIOS      |        |     RESERVAS      |        |    HABITACIONES   |
++-------------------+        +-------------------+        +-------------------+
+| PK id_usuario     |<------ | PK id_reserva     | ------>| PK id_habitacion  |
+|    nombre         |        | FK id_cliente     |        |    numero         |
+|    email          |        | FK id_habitacion  |        |    tipo           |
+|    password       |        |    fecha_inicio   |        |    precio         |
+|    rol            |        |    fecha_fin      |        |    estado         |
++-------------------+        |    estado_reserva |        +-------------------+
+                             +-------------------+
+                                       |
+                                       v
+                             +-------------------+
+                             |     CLIENTES      |
+                             +-------------------+
+                             | PK id_cliente     |
+                             |    documento      |
+                             |    nombre         |
+                             |    telefono       |
+                             +-------------------+

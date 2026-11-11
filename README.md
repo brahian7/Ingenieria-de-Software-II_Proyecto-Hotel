@@ -11,10 +11,8 @@ Sistema de información desarrollado para la automatización, administración y 
 | Integrante | Rol | Responsabilidad Principal |
 | :--- | :--- | :--- |
 | **Juan Manuel Orozco** | **Líder Técnico** | Coordina el alcance, la arquitectura general del software y la integración de los cambios en el repositorio. |
-| **Jan Esteban Suarez Escobar** | **Responsable de Pruebas** | Diseña los casos de prueba (unitarios/integración) y coordina su automatización para verificar la estabilidad del sistema. |
-| **Brayan Camilo Caceres** | **Responsable de Calidad y Documentación** | Revisa la calidad del código, registra defectos, propone acciones de mantenimiento y mantiene la documentación del `README.md`. |
-
-*(Reemplaza "Integrante 1", "Integrante 2" e "Integrante 3" por los nombres reales de los miembros del equipo).*
+| **Brayan Camilo Caceres** | **Responsable de Pruebas** | Diseña los casos de prueba (unitarios/integración) y coordina su automatización para verificar la estabilidad del sistema. |
+| **Jan Esteban Suarez Escobar** | **Responsable de Calidad y Documentación** | Revisa la calidad del código, registra defectos, propone acciones de mantenimiento y mantiene la documentación del `README.md`. |
 
 ---
 

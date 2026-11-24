@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================
+   ESTILOS DEL SISTEMA HOTEL LA ITALIA
+========================================================== */
+
+:root{
+    --primary:#0F4C81;
+    --secondary:#F4F6F9;
+    --success:#198754;
+    --danger:#DC3545;
+    --warning:#FFC107;
+}
+
+body{
+    background:#eef2f7;
+}
+
+.sidebar{
+    background:var(--primary);
+}
+
+.list-group-item{
+    border:none;
+    border-radius:0;
+    padding:15px 20px;
+}
+
+.list-group-item:hover{
+    background:#0d3d66;
+    color:white;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.navbar{
+    background:var(--primary)!important;
+}
